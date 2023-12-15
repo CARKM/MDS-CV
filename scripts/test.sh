@@ -1,0 +1,29 @@
+K_CENTER=2
+K_REFINE=3
+K_SKIP=3
+MASK_MODE=res
+
+INPUT_SIZE=256
+DATASET=CLWD
+NAME=slbr
+
+CUDA_VISIBLE_DEVICES=1 python  test.py \
+  --nets slbr \
+  --models slbr \
+  --input-size ${INPUT_SIZE} \
+  --crop_size ${INPUT_SIZE} \
+  --test-batch 1 \
+  --evaluate\
+  --dataset_dir /mnt/data/maixuan/group/SLBR-Visible-Watermark-Removal/${DATASET} \
+  --preprocess resize \
+  --no_flip \
+  --name ${NAME} \
+  --mask_mode ${MASK_MODE} \
+  --k_center ${K_CENTER} \
+  --dataset ${DATASET} \
+  --resume /mnt/data/maixuan/group/SLBR-Visible-Watermark-Removal/new/${NAME}/model_best.pth.tar \
+  --use_refine \
+  --k_refine ${K_REFINE} \
+  --k_skip_stage ${K_SKIP} \
+  --checkpoint /mnt/data/maixuan/group/SLBR-Visible-Watermark-Removal/res \
+  
